@@ -29,3 +29,14 @@ Because this project utilizes pure web standards without relying on build tools 
 - **Images:** Any generated images are currently loading from `./assets/` or fallback URLs from `placehold.co`. You can drop your own HD room photos into the assets folder and rename them in `app.js` under the `renderResults` function.
 - **Theme:** You can modify the site's entire color flow globally just by changing the `--primary-color` CSS variable inside `styles.css`.
 
+## 👨‍💻 Author
+
+Ibrahim Fayyad
+📍 Germany
+💼 Full Stack Developer
+
+## 🔗 GitHub
+
+https://github.com/ibrahimf90
+
+
