@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Hotel | Luxury & Comfort</title>
+    <meta
+      name="description"
+      content="Experience unparalleled luxury at My Hotel. Book your stay today and discover a world of comfort."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo" onclick="navigateTo('home')">My Hotel</div>
+      <div class="nav-links">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a
+          href="#"
+          id="nav-reserve"
+          style="display: none"
+          onclick="navigateTo('reservation')"
+          >Reserve</a
+        >
+        <a href="#" id="nav-login" onclick="navigateTo('login')"
+          >Login / Register</a
+        >
+        <a href="#" id="nav-logout" style="display: none" onclick="logoutUser()"
+          >Logout</a
+        >
+      </div>
+    </nav>
+
+    <main id="app-container">
+      <section id="view-home" class="view active">
+        <div class="hero">
+          <div class="hero-content">
+            <h1>Welcome to My Hotel</h1>
+            <p>Discover a world of unparalleled luxury and comfort.</p>
+            <button class="btn btn-primary" onclick="handleReserveClick()">
+              Book Your Stay
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-login" class="view">
+        <div class="form-container glass-panel">
+          <h2>Login to Your Account</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input
+                type="email"
+                id="login-email"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                required
+                placeholder="Enter your password"
+              />
+            </div>
+            <div id="login-error" class="error-msg"></div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <p class="form-switch">
+              Don't have an account?
+              <a href="#" onclick="navigateTo('register')">Register here</a>
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-register" class="view">
+        <div class="form-container glass-panel large-panel">
+          <h2>Create an Account</h2>
+          <form id="register-form">
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label for="reg-name">Full Name</label>
+                <input
+                  type="text"
+                  id="reg-name"
+                  required
+                  placeholder="John Doe"
+                />
+              </div>
+              <div class="form-group half-width">
+                <label for="reg-dob">Date of Birth</label>
+                <input type="date" id="reg-dob" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-address">Address</label>
+              <input
+                type="text"
+                id="reg-address"
+                required
+                placeholder="123 Luxury Avenue, City"
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label for="reg-nationality">Nationality</label>
+                <input
+                  type="text"
+                  id="reg-nationality"
+                  required
+                  placeholder="Your Country"
+                />
+              </div>
+              <div class="form-group half-width">
+                <label for="reg-phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="reg-phone"
+                  required
+                  placeholder="+1 234 567 8900"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email">Email</label>
+              <input
+                type="email"
+                id="reg-email"
+                required
+                placeholder="john@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-password">Password</label>
+              <input
+                type="password"
+                id="reg-password"
+                required
+                placeholder="Create a strong password"
+              />
+            </div>
+
+            <div id="register-error" class="error-msg"></div>
+            <button type="submit" class="btn btn-primary w-100">
+              Register
+            </button>
+            <p class="form-switch">
+              Already have an account?
+              <a href="#" onclick="navigateTo('login')">Login here</a>
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-reservation" class="view">
+        <div class="form-container glass-panel large-panel">
+          <h2>Reserve a Room</h2>
+          <form id="reservation-form">
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label for="res-start">Starting Date</label>
+                <input type="date" id="res-start" required />
+              </div>
+              <div class="form-group half-width">
+                <label for="res-end">Ending Date</label>
+                <input type="date" id="res-end" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="res-room-type">Room Type</label>
+              <select
+                id="res-room-type"
+                required
+                onchange="updateGuestLimits()"
+              >
+                <option value="">Select a room type</option>
+                <option value="single">
+                  Single Room (Max 2 Adults, 0 Kids)
+                </option>
+                <option value="double">
+                  Double Room (Max 2 Adults, 2 Kids)
+                </option>
+                <option value="suite">Suite (Max 2 Adults, 4 Kids)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label for="res-adults">Number of Adults</label>
+                <input
+                  type="number"
+                  id="res-adults"
+                  required
+                  min="1"
+                  max="2"
+                  value="1"
+                />
+              </div>
+              <div class="form-group half-width">
+                <label for="res-kids">Number of Kids</label>
+                <input type="number" id="res-kids" required min="0" value="0" />
+              </div>
+            </div>
+
+            <div id="reservation-error" class="error-msg"></div>
+            <button type="submit" class="btn btn-primary w-100">
+              Check Room Availability
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-results" class="view">
+        <div class="results-container">
+          <h2>Available Room Options</h2>
+          <button
+            class="btn btn-secondary mb-1"
+            onclick="navigateTo('reservation')"
+          >
+            &larr; Back to Search
+          </button>
+
+          <div id="results-content" class="room-card glass-panel"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
