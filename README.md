@@ -4,7 +4,7 @@ My Hotel is a dynamic, fully-featured hotel reservation Single Page Application 
 
 - **HTML5:** Pure HTML skeleton structure.
 - **CSS3:** Premium styling with a gorgeous dark glassmorphism design, utilizing custom CSS variables, layout positioning, and modern animations.
-- **Vanilla JavaScript:** Powers the SPA routing, data handling via `sessionStorage` for persistence across reloads, form validation, check-in constraints, and the generation of interactive results.
+- **JavaScript:** Powers the SPA routing, data handling via `sessionStorage` for persistence across reloads, form validation, check-in constraints, and the generation of interactive results.
 
 ## Features
 
